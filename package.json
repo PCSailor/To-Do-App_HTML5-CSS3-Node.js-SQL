@@ -1,0 +1,24 @@
+{
+  "name": "to-do-app",
+  "version": "1.0.0",
+  "description": " To-Do-App_HTML5/CSS3/Node.js/SQL",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PCSailor/To-Do-App_HTML5-CSS3-Node.js-SQL.git"
+  },
+  "author": "philip_curtis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PCSailor/To-Do-App_HTML5-CSS3-Node.js-SQL/issues"
+  },
+  "homepage": "https://github.com/PCSailor/To-Do-App_HTML5-CSS3-Node.js-SQL#readme",
+  "dependencies": {
+    "body-parser": "^1.17.0",
+    "express": "^4.15.0",
+    "pg": "^6.1.2"
+  }
+}
