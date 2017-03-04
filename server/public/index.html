@@ -1,13 +1,94 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>to-do-app-sql</title>
-    <script src="/vendors/jquery-3.1.1.min.js" charset="utf-8"></script>
-    <script src="/scripts/client.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="/styles/styles.css">
-  </head>
-  <body>
-<h1>a To-Do app, by Phil Curtis</h1>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>to-do-app-sql</title>
+  <script src="/vendors/jquery-3.1.1.min.js" charset="utf-8"></script>
+  <script src="/scripts/client.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+  <h1>A To-Do app, by Phil Curtis</h1>
+  <p>
+    <!-- Hamburger menu -->
+    <div class=menu></div>
+    <div class=menu></div>
+    <div class=menu></div> <!-- https://www.w3schools.com/howto/howto_css_menu_icon.asp -->
+  </p>
+  <p>
+    <div id="folders">
+      <h4>Folders</h4>
+      <ul>
+      </ul>
+    </p>
+  </div>
+
+  <div id="center">
+    <p>
+      <input id="enterNewTask" placeholder="Enter New Task">
+      <button id="enterNewTaskButton">Enter New Task</button>
+    </p>
+
+    <p>
+      <ul id="Most Recent Tasks">
+      </ul>
+      <h3>Select Boxes</h3>
+      <ul id="selectBoxes">
+        <li>Delete Task</li>
+        <li>Completed</li>
+        <li>In Progress</li>
+        <li>Assistance Needed</li>
+        <li>Set Reminder</li>
+      </ul>
+      <h3>Possible Options</h3>
+    </p>
+
+    <p>
+      <ul id="possibleOptions">
+        <li>Color Code with Edit-label</li>
+        <li>Add to Calander plus invite</li>
+        <li>Add to Reoccuring List</li>
+      </ul>
+    </p>
+  </div>
+
+
+
+  <!-- Black Responsive Menus -->
+  <!-- <div class="nav-container">
+  <p>
+  <ul class="nav">
+  <li class="active">
+  <a href="#">
+  <span class="icon-home"></span>
+  <span class="text">Home</span>
+</a>
+</li>
+<li>
+<a href="#">
+<span class="icon-user"></span>
+<span class="text">Contact</span>
+</a>
+</li>
+<li>
+<a href="#">
+<span class="icon-headphones"></span>
+<span class="text">Summary</span>
+</a>
+</li>
+<li>
+<a href="#">
+<span class="icon-picture"></span>
+<span class="text">Experience</span>
+</a>
+</li>
+<li>
+<a href="#">
+<span class="icon-facetime-video"></span><span class="text">Education</span>
+</a>
+</li>
+</ul>
+</p>
+</div> -->
+</body>
 </html>
