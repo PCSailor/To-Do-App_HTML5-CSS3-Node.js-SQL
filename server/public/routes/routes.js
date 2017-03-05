@@ -3,7 +3,7 @@ var router = express.Router();
 
 var pg = require('pg'); // sources pg from node_modules
 var config = {
-  database: 'Phi', // db name // TODO: add database
+  database: 'phi', // db name // TODO: add database
   host: 'localhost', // db location
   port: 5432,
   max: 10, // # connections @ once
@@ -11,27 +11,31 @@ var config = {
 }
 var pool = new pg.Pool(config);
 
-// NOTE: router.post Tasks
+// NOTE: POST
 router.post('/', function(req, res){ // NOTE: installed by body-parser, path from client.js, replaced with SQL-INSERT
 var newTasks = req.body;
+console.log('routes.js/newTasks = ', newTasks);
+console.log('routes.js/req.body = ', req.body);
 pool.connect(function(errorConnectingToDatabase, client, done){
   if(errorConnectingToDatabase) {
-    console.log('pool.connect errorConnectingToDatabase ', errorConnectingToDatabase);
+    console.log('POST errorConnectingToDatabase = ', errorConnectingToDatabase);
     res.sendStatus(500);
   } else {  // NOTE: Database Connected
-    client.query('INSERT INTO tasks (tasks_active, tasks_inprogress, tasks_needhelp, tasks_reminder, tasks_oncalendar, tasks_completed, importance, color) VALUES ($1, $2, $3, $4, $5, $6, $7);',
-    [newTasks.tasks_active,
-    newTasks.tasks_inprogress,
-    newTasks.tasks_needhelp,
-    newTasks.tasks_reminder,
-    newTasks.tasks_oncalendar,
-    newTasks.tasks_completed,
-    newTasks.importance,
-    newTasks.color],
+    // client.query('INSERT INTO tasks (tasks_active, tasks_inprogress, tasks_needhelp, tasks_reminder, tasks_oncalendar, tasks_completed, importance, color) VALUES ($1, $2, $3, $4, $5, $6, $7);',
+    client.query('INSERT INTO tasks_two (tasks_active) VALUES ($1);',
+    // client.query('UPDATE tasks_two (tasks_active) VALUES ($1);',
+    [newTasks.tasks_active],
+    // newTasks.tasks_inprogress,
+    // newTasks.tasks_needhelp,
+    // newTasks.tasks_reminder,
+    // newTasks.tasks_oncalendar,
+    // newTasks.tasks_completed,
+    // newTasks.importance,
+    // newTasks.color],
     function(errorMakingQuery, result) {
       done();
       if(errorMakingQuery) {
-        console.log('function-errorMakingQuery ', errorMakingQuery);
+        console.log('POST error-Making-Query = ', errorMakingQuery);
         res.sendStatus(500);
       } else {
         res.sendStatus(201);

@@ -7,6 +7,7 @@ app.use(express.static('server/public')); // static file search
 // NOTE: body-parser
 var bodyParser = require('body-parser'); // retrieves created data
 app.use(bodyParser.urlencoded({extended: true})); //req.body created below
+var port = 5000;
 
 // NOTE: Moved to routes.js
 // NOTE: pg
@@ -19,7 +20,6 @@ app.use(bodyParser.urlencoded({extended: true})); //req.body created below
 //   max: 10, // # connections @ once
 //   idleTimeoutMillis: 30000 // 30 sec timeout
 // }
-var port = 5000;
 // QUESTION: Does this order matter?
 
 // var tasks = require('./routes/routes.js');
@@ -27,5 +27,5 @@ var port = 5000;
 // var tasks = require('/routes/routes.js');
 var tasks = require('./public/routes/routes.js');
 app.use('/newTask', tasks);
-
+// console.log('app.js/tasks/require sent = ',tasks); // NOTE: Terminals the following when server started: function router(req, res, next) { router.handle(req, res, next);}
 app.listen(port);
