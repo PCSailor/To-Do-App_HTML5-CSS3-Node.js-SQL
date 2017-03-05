@@ -1,13 +1,15 @@
 $(function(){
   console.log(new Date().getFullYear() + " jQuery sourced");
   $('#enterNewTaskButton').on('click', function(){
-    var varEnterNewTask = $('#enterNewTask').val();
-    console.log('enter-New-Task-Button-clicked!');
-    console.log('var-Enter-New-Task = ',varEnterNewTask);
+    // console.log('enter-New-Task-Button-clicked!');
+    var clientObject = {}; //var newBookObject = {};
+    clientObject.tasks_active = $('#enterNewTask').val();
+    console.log('clientObject = ', clientObject);
+    console.log(typeof clientObject);
     $.ajax({
       type: 'POST',
       url: '/newTask',
-      data: varEnterNewTask,
+      data: clientObject,
       success: function(response){
         console.log('client.js/newtask response = ', response);
       } // NOTE: FOR: success-function
