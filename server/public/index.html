@@ -9,67 +9,70 @@
 </head>
 <body>
   <h1>A To-Do app, by Phil Curtis</h1>
+  <div id="center">
+    <p>
+      <!-- Hamburger menu -->
+      <div class=menu></div>
+      <div class=menu></div>
+      <div class=menu></div> <!-- https://www.w3schools.com/howto/howto_css_menu_icon.asp -->
+    </p>
+
+    <p>
+      <div id="folders">
+        <h4>Folders</h4>
+        <ul>
+        </ul>
+      </p>
+    </div>
+
+    <div id="taskEntry">
+      <form id="newTaskForm" action="index.html" method="post">
+        <p>
+          <input name="tasks_active" placeholder="Enter New Task" id="enterNewTask">
+          <button type="submit" id="enterNewTaskButton">Click here to enter a new task</button>
+        </p>
+      </form>
+      <p>
+        <table>
+          <thead>
+            <tr>
+              <th>Tasks</th>
+            </tr>
+          </thead>
+          <tbody id="tasks_active">
+
+          </tbody>
+        </table>
+      </p>
+    </div>
+
+
+
+
+
+
+    <h3>Select Boxes</h3>
+    <ul id="selectBoxes">
+      <li>Delete Task</li>
+      <li>Completed</li>
+      <li>In Progress</li>
+      <li>Assistance Needed</li>
+      <li>Set Reminder</li>
+    </ul>
+    <h3>Possible Options</h3>
+  </p>
+
   <p>
-    <!-- Hamburger menu -->
-    <div class=menu></div>
-    <div class=menu></div>
-    <div class=menu></div> <!-- https://www.w3schools.com/howto/howto_css_menu_icon.asp -->
+    <ul id="possibleOptions">
+      <li>Color Code with Edit-label</li>
+      <li>Add to Calander plus invite</li>
+      <li>Add to Reoccuring List</li>
+    </ul>
   </p>
   <p>
-    <div id="folders">
-      <h4>Folders</h4>
-      <ul>
-      </ul>
-    </p>
-  </div>
 
-  <div id="center">
-    <form id="newTaskForm" action="index.html" method="post">
-    <p>
-      <input name="tasks_active" placeholder="Enter New Task"> <!-- id="enterNewTask"  -->
-      <button type="submit" id="enterNewTaskButton">Click here to enter a new task</button>
-    </p>
-    </form>
-    <p>
-      <table>
-        <thead>
-          <tr>
-            <th>Tasks</th>
-          </tr>
-        </thead>
-        <tbody id="tasks_active">
-
-        </tbody>
-      </table>
-      </p>
-
-
-
-
-
-
-
-      <h3>Select Boxes</h3>
-      <ul id="selectBoxes">
-        <li>Delete Task</li>
-        <li>Completed</li>
-        <li>In Progress</li>
-        <li>Assistance Needed</li>
-        <li>Set Reminder</li>
-      </ul>
-      <h3>Possible Options</h3>
-    </p>
-
-    <p>
-      <ul id="possibleOptions">
-        <li>Color Code with Edit-label</li>
-        <li>Add to Calander plus invite</li>
-        <li>Add to Reoccuring List</li>
-      </ul>
-    </p>
-    <p>
-    <ul>
-      <li><h3>Stretch Goals:</h3></li>
+    <h3>Stretch Goals:</h3>
+    <ul id="stretchGoals">
       <li>Collaspeable folder list on left with is organized by year/month (i.e.: 2017-03) and automatically puts a task inside the correct folder</li>
       <li>Cloud based data</li>
 

@@ -25,11 +25,15 @@ padding: 5px;
 }
 
 #center {
+  display:block;
+}
+#taskEntry #newTaskForm {
   margin: auto;
-  width: 60%;
+  width: 95%;
   border: 3px solid black;
   padding: 10px;
 }
+
 
 .menu {
   width: 35px;
@@ -39,7 +43,7 @@ padding: 5px;
 } /*https://www.w3schools.com/howto/howto_css_menu_icon.asp*/
 
 #folders {
-  float: left;
+  /*float: left;*/
   width: 150px;
   border: 3px solid black;
   padding: 10px;
@@ -51,7 +55,7 @@ padding: 5px;
 
 #enterNewTaskButton {
   width: 20%;
-  height: 30px;
+  height: 50px;
 }
 
 
