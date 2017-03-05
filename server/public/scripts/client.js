@@ -1,5 +1,7 @@
 $(function(){
   console.log(new Date().getFullYear() + " jQuery sourced");
+
+
   // NOTE: ajax.GET
   getTaskData();
   function getTaskData() {
@@ -17,40 +19,75 @@ $(function(){
           $newTask.append('<td><button class="deleteButton">Delete</button></td>');
           $newTask.append('<td><button class="editTask">Save Edit</button></td>');
           $('#tasks_active').prepend($newTask); // NOTE: Add new task to top of list
-
-
-
-// <form id="newTaskForm" action="index.html" method="post">
-// <input name="tasks_active">
-// <button type="submit" id="enterNewTaskButton">
-// <tbody id="tasks_active">
-
+          // NOTE: From index.html:
+          // <form id="newTaskForm" action="index.html" method="post">
+          // <input name="tasks_active">
+          // <button type="submit" id="enterNewTaskButton">
+          // <tbody id="tasks_active">
         } // NOTE: FOR: forLoop
       } // NOTE: FOR: success: function
     }); // NOTE: FOR: ajax.GET
   } // NOTE: FOR: function getTaskData
 
 
-
-
-
-
   // NOTE: ajax.POST
   $('#enterNewTaskButton').on('click', function(){
     // console.log('enter-New-Task-Button-clicked!');
+    event.preventDefault();  // QUESTION: What is this for again?
     var clientObject = {}; //var newBookObject = {};
+    // QUESTION: Is this code from Books needed?
+    //     var formFields = $(this).serializeArray();
+    // formFields.forEach(function (field) {
+    //   clientObject[field.name] = field.value;
+    // });
+    // console.log('client.js/formfields = ', formfields);
+    // QUESTION: Is this code from Books needed?
     clientObject.tasks_active = $('#enterNewTask').val();
-    console.log('clientObject = ', clientObject);
+    console.log('client.js/clientObject = ', clientObject);
     console.log(typeof clientObject);
     $.ajax({
       type: 'POST',
       url: '/newTask',
-      data: clientObject,
+      data: clientObject,  // NOTE: data to routes.js/router.post/var newTasks = req.body;
       success: function(response){
         console.log('client.js/newtask response = ', response);
+        getTaskData();
+        $('#newTaskForm > input').val('');
       } // NOTE: FOR: success-function
     }); // NOTE: FOR: ajax-post
   }); // NOTE: FOR: enterNewTaskButton').on('click'
-}); // NOTE: FOR: Doc-ready-$(function(){})
 
-// ensure req.body variables match the ones you're sending in your AJAX call. I'd recommend doing a `console.log(req.body)` in your server code. The output should show up in your terminal window.
+
+  // NOTE: ajax.delete
+  $('#tasks_active').on('click', '.deleteButton', function(){
+    var idDelectedTask = $(this).parent().parent().data().id; // TODO: CHECK TRANSVERSING
+    console.log('This is the task to delete: ', idDelectedTask);
+    $.ajax({
+      type: 'Delete',
+      url: '/tasks/delete/' + idDelectedTask,
+      success: function(response) {
+        console.log('successful delete reponse: ', reponse);
+        getTaskData();
+      }
+    })
+  });
+
+
+  // NOTE: ajax.UPDATE
+  $('#tasks_active').on('click', '.editTask', function() {
+    var idEditedTask = $(this).parent().parent().data().id; // TODO: CHECK TRANSVERSING
+    var taskToSave = $(this).parent().parent().find('.taskList').val();
+    var taskObjectToSave = {
+      tasks_active: taskToSave
+    };
+    $.ajax({
+      type: 'PUT',
+      url: '/tasks/edit/' + idEditedTask,
+      data: taskObjectToSave,
+      success: function(response) {
+        console.log('successful update reponse: ', reponse);
+        getTaskData();
+      }
+    });
+  });
+}); // NOTE: FOR: Doc-ready-$(function(){})

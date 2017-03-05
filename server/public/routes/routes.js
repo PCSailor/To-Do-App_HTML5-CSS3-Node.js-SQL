@@ -13,9 +13,9 @@ var pool = new pg.Pool(config);
 
 // NOTE: POST
 router.post('/', function(req, res){ // NOTE: installed by body-parser, path from client.js, replaced with SQL-INSERT
-var newTasks = req.body;
-console.log('routes.js/newTasks = ', newTasks);
-console.log('routes.js/req.body = ', req.body);
+var newTasks = req.body;  // NOTE: data from client.js/ajax-post/data: clientObject,
+console.log('routes.js/newTasks = ', newTasks); // NOTE: should match data from client.js/ajax-post/data: clientObject,
+console.log('routes.js/req.body = ', req.body); // NOTE: should match data from client.js/ajax-post/data: clientObject,
 pool.connect(function(errorConnectingToDatabase, client, done){
   if(errorConnectingToDatabase) {
     console.log('POST errorConnectingToDatabase = ', errorConnectingToDatabase);
