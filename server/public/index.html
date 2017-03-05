@@ -24,14 +24,31 @@
   </div>
 
   <div id="center">
+    <form id="newTaskForm" action="index.html" method="post">
     <p>
-      <input id="enterNewTask" name="tasks_active" placeholder="Enter New Task">
-      <button id="enterNewTaskButton">Enter New Task</button>
+      <input name="tasks_active" placeholder="Enter New Task"> <!-- id="enterNewTask"  -->
+      <button type="submit" id="enterNewTaskButton">Click here to enter a new task</button>
     </p>
-
+    </form>
     <p>
-      <ul id="Most Recent Tasks">
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Tasks</th>
+          </tr>
+        </thead>
+        <tbody id="tasks_active">
+
+        </tbody>
+      </table>
+      </p>
+
+
+
+
+
+
+
       <h3>Select Boxes</h3>
       <ul id="selectBoxes">
         <li>Delete Task</li>
@@ -50,6 +67,13 @@
         <li>Add to Reoccuring List</li>
       </ul>
     </p>
+    <p>
+    <ul>
+      <li><h3>Stretch Goals:</h3></li>
+      <li>Collaspeable folder list on left with is organized by year/month (i.e.: 2017-03) and automatically puts a task inside the correct folder</li>
+      <li>Cloud based data</li>
+
+    </ul></p>
   </div>
 
 

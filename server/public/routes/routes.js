@@ -22,7 +22,7 @@ pool.connect(function(errorConnectingToDatabase, client, done){
     res.sendStatus(500);
   } else {  // NOTE: Database Connected
     // client.query('INSERT INTO tasks (tasks_active, tasks_inprogress, tasks_needhelp, tasks_reminder, tasks_oncalendar, tasks_completed, importance, color) VALUES ($1, $2, $3, $4, $5, $6, $7);',
-    client.query('INSERT INTO tasks_two (tasks_active) VALUES ($1);',
+    client.query('INSERT INTO tasks_one (tasks_active) VALUES ($1);',
     // client.query('UPDATE tasks_two (tasks_active) VALUES ($1);',
     [newTasks.tasks_active],
     // newTasks.tasks_inprogress,
