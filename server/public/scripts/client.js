@@ -17,10 +17,13 @@ $(function(){
           $newTask.append('<td><button class="deleteButton">Delete</button></td>');
           $newTask.append('<td><button class="editTask">Save Edit</button></td>');
           $('#tasks_active').prepend($newTask); // NOTE: Add new task to top of list
-<form id="newTaskForm" action="index.html" method="post">
-<input name="tasks_active" placeholder="Enter New Task"> <!-- id="enterNewTask"  -->
-<button type="submit" id="enterNewTaskButton">Click here to enter a new task</button>
-<tbody id="tasks_active">
+
+
+
+// <form id="newTaskForm" action="index.html" method="post">
+// <input name="tasks_active">
+// <button type="submit" id="enterNewTaskButton">
+// <tbody id="tasks_active">
 
         } // NOTE: FOR: forLoop
       } // NOTE: FOR: success: function
