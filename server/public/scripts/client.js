@@ -7,7 +7,7 @@ $(function(){
   // function getTaskData() {
   //   $.ajax({
   //     type: 'GET',
-  //     url: '/tasks',
+  //     url: '/tasks',  // NOTE: /tasks
   //     success: function(response) {
   //       console.log('ajax-GET-success-function-response: ', response);
   //       $('#tasks_active').empty(); // NOTE: Body ID which clears the list before reloading
@@ -47,7 +47,7 @@ $(function(){
     console.log(typeof clientObject);
     $.ajax({
       type: 'POST',
-      url: '/newTask',
+      url: '/tasks/newTask',  // NOTE: /tasks/newTask
       data: clientObject,  // NOTE: data to routes.js/router.post/var newTasks = req.body;
       success: function(response){
         console.log('client.js/newtask response = ', response);
@@ -64,7 +64,7 @@ $(function(){
   //   console.log('This is the task to delete: ', idDelectedTask);
   //   $.ajax({
   //     type: 'Delete',
-  //     url: '/tasks/delete/' + idDelectedTask,
+  //     url: '/tasks/delete/' + idDelectedTask,  // NOTE: /tasks/delete
   //     success: function(response) {
   //       console.log('successful delete reponse: ', reponse);
   //       getTaskData();
@@ -82,7 +82,7 @@ $(function(){
   //   };
   //   $.ajax({
   //     type: 'PUT',
-  //     url: '/tasks/edit/' + idEditedTask,
+  //     url: '/tasks/edit/' + idEditedTask,  // NOTE: /tasks/edit
   //     data: taskObjectToSave,
   //     success: function(response) {
   //       console.log('successful update reponse: ', reponse);

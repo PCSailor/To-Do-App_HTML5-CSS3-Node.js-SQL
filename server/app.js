@@ -26,6 +26,6 @@ var port = 5000;
 // var tasks = require('/routes/routes.js');
 // var tasks = require('/routes/routes.js');
 var tasks = require('./public/routes/routes.js');
-app.use('/newTask', tasks);
+app.use('/tasks', tasks);
 // console.log('app.js/tasks/require sent = ',tasks); // NOTE: Terminals the following when server started: function router(req, res, next) { router.handle(req, res, next);}
 app.listen(port);
