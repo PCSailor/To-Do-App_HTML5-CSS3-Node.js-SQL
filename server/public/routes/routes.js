@@ -12,6 +12,8 @@ var config = {
 var pool = new pg.Pool(config);
 
 
+
+// BUG: adding new task only after page refresh, showing up on terminal and console with click
 // NOTE: router GET
 router.get('/', function(req, res){ // replaced with a SELECT statement into SQL
   pool.connect(function(errorConnectingToDatabase, client, done) {
@@ -68,55 +70,55 @@ pool.connect(function(errorConnectingToDatabase, client, done){
 }); // NOTE: FOR: router.post
 
 
-// NOTE: router.delete
-router.delete('/delete/:id', function(req, res) {
-  var taskId = req.params.id; // QUESTION: Identify code purpose
-  console.log('Task to delete: ', taskId);
-  pool.connect(function(errorConnectingToDatabase, client, done){
-    if(errorConnectingToDatabase) {
-      console.log('router.delete-error-connecting-to-database: ', errorConnectingToDatabase);
-      res.sendStatus(500);
-    } else {
-      client.query('DELETE FROM tasks_one WHERE id=$1;',
-      [taskId],
-      function(errorMakingQuery, result) { // NOTE: runs after query is sent out
-        done();
-        if(errorMakingQuery) {
-          console.log('router.delete-error-making-query: ', errorMakingQuery);
-          res.sendStatus(500);
-        } else {
-          res.sendStatus(202);
-        } // NOTE: FOR: else
-      }); // NOTE: FOR: function(errorMakingQuery AND client query
-      } // NOTE: FOR: else
-    }); // NOTE: FOR: pool connect
-  }); // NOTE: FOR: router.delete
-
-
-  // NOTE: router.PUT
-  router.put('/edit/:id', function(req, res) {
-    var taskId = req.params.id; // QUESTION: Identify code purpose
-    var taskObject = req.body;
-    console.log('Task to update: ', taskId);
-    pool.connect(function(errorConnectingToDatabase, client, done) {
-      if(errorConnectingToDatabase) {
-        console.log('router.put-error-connecting-to-database: ', errorConnectingToDatabase);
-        res.sendStatus(500);
-      } else {
-        client.query('UPDATE tasks_one SET tasks_active=$1 WHERE id=$2;', // NOTE: SQL query
-        [taskObject.tasks_active, taskId], // NOTE: array that replaces $1, $2 in the query
-        function(errorMakingQuery, result) { // NOTE: runs after query is sent out
-          done();
-          if(errorMakingQuery) {
-            console.log('router.put-error-making-query: ', errorMakingQuery);
-            res.sendStatus(500);
-          } else {
-            res.sendStatus(202);
-          } // NOTE: FOR: else
-        }); // NOTE: FOR: function-errorMakingQuery AND client.query
-      } // NOTE: FOR: else
-    }); // NOTE: FOR: pool.connect
-  }); // NOTE: FOR: router.put
+// // NOTE: router.delete
+// router.delete('/delete/:id', function(req, res) {
+//   var taskId = req.params.id; // QUESTION: Identify code purpose
+//   console.log('Task to delete: ', taskId);
+//   pool.connect(function(errorConnectingToDatabase, client, done){
+//     if(errorConnectingToDatabase) {
+//       console.log('router.delete-error-connecting-to-database: ', errorConnectingToDatabase);
+//       res.sendStatus(500);
+//     } else {
+//       client.query('DELETE FROM tasks_one WHERE id=$1;',
+//       [taskId],
+//       function(errorMakingQuery, result) { // NOTE: runs after query is sent out
+//         done();
+//         if(errorMakingQuery) {
+//           console.log('router.delete-error-making-query: ', errorMakingQuery);
+//           res.sendStatus(500);
+//         } else {
+//           res.sendStatus(202);
+//         } // NOTE: FOR: else
+//       }); // NOTE: FOR: function(errorMakingQuery AND client query
+//       } // NOTE: FOR: else
+//     }); // NOTE: FOR: pool connect
+//   }); // NOTE: FOR: router.delete
+//
+//
+//   // NOTE: router.PUT
+//   router.put('/edit/:id', function(req, res) {
+//     var taskId = req.params.id; // QUESTION: Identify code purpose
+//     var taskObject = req.body;
+//     console.log('Task to update: ', taskId);
+//     pool.connect(function(errorConnectingToDatabase, client, done) {
+//       if(errorConnectingToDatabase) {
+//         console.log('router.put-error-connecting-to-database: ', errorConnectingToDatabase);
+//         res.sendStatus(500);
+//       } else {
+//         client.query('UPDATE tasks_one SET tasks_active=$1 WHERE id=$2;', // NOTE: SQL query
+//         [taskObject.tasks_active, taskId], // NOTE: array that replaces $1, $2 in the query
+//         function(errorMakingQuery, result) { // NOTE: runs after query is sent out
+//           done();
+//           if(errorMakingQuery) {
+//             console.log('router.put-error-making-query: ', errorMakingQuery);
+//             res.sendStatus(500);
+//           } else {
+//             res.sendStatus(202);
+//           } // NOTE: FOR: else
+//         }); // NOTE: FOR: function-errorMakingQuery AND client.query
+//       } // NOTE: FOR: else
+//     }); // NOTE: FOR: pool.connect
+//   }); // NOTE: FOR: router.put
 
 
 module.exports = router;
