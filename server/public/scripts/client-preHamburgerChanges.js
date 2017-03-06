@@ -94,38 +94,4 @@ $(function(){
     });
   });
 
-
-// NOTE: Open the Menu
-  $("#hamburger").click(function () {
-       $('#content').css('min-height', $(window).height());
-        $('nav').css('opacity', 1);
-        var contentWidth = $('#content').width(); // NOTE: set primary content container width so content doesnt scale while animating
-        $('#content').css('width', contentWidth); // NOTE: set content to original width
-        $('#contentLayer').css('display', 'block'); // NOTE: display layer to disable clicking-scrolling on content while menu shown
-        $('#container').bind('touchmove', function (e) { // NOTE: disable mobile-device-all-scrolling while menu shown
-            e.preventDefault()
-        });
-        //set margin for the whole container with a jquery UI animation
-        $("#container").animate({"marginLeft": ["70%", 'easeOutExpo']}, {
-            duration: 700
-        });
-    });
-
-
-// NOTE: Close the menu
-  $("#contentLayer").click(function () {
-      $('#container').unbind('touchmove'); // NOTE: enable mobile-device-all-scrolling with closed menu
-      $("#container").animate({"marginLeft": ["-1", 'easeOutExpo']}, { // NOTE: set whole container margin to original-jquery UI animation
-          duration: 700,
-          complete: function () {
-              $('#content').css('width', 'auto');
-              $('#contentLayer').css('display', 'none');
-              $('nav').css('opacity', 0);
-              $('#content').css('min-height', 'auto');
-          }
-      });
-  }); // NOTE: Sourced from https://github.com/PCSailor/mobile-menu-hamburger/edit/master/js/hamburger.js
-
-
-
 }); // NOTE: FOR: Doc-ready-$(function(){})
