@@ -18,10 +18,11 @@ $(function(){
             var currentTask = response[i]; // NOTE: Loops through task object
             var $newTask = $('<tr>'); // NOTE: Creates a new row for each task
             $newTask.data('id', currentTask.id); // NOTE: Getting data from ?? // QUESTION: Which ID pointting to?
-            $newTask.append('<td><input value=" ' + currentTask.tasks_active + '" class="taskList"></td>');
-            $newTask.append('<td><button class="deleteButton">Delete</button></td>');
-            $newTask.append('<td><button class="editTask">Save Edit</button></td>');
-            $('#tasks_active').append($newTask); // NOTE: Add new task to top of list
+            $newTask.append('<td><input value="' + currentTask.tasks_active + '" class="taskList"></td>');
+            $newTask.append('<td><button id="completedTask">Completed</button></td>');
+            $newTask.append('<td><button id="editTask">Save Edit</button></td>');
+            $newTask.append('<td><button id="deleteButton">Delete</button></td>');
+            $('#tasks_active').prepend($newTask); // NOTE: Add new task to top of list
             // NOTE: From index.html:
             // <form id="newTaskForm" action="index.html" method="post">
             // <input name="tasks_active">
@@ -30,7 +31,7 @@ $(function(){
           } // NOTE: FOR: forLoop
         } // NOTE: FOR: success: function
       }); // NOTE: FOR: ajax.GET
-    // }); // NOTE: FOR: on-click
+  //  }); // NOTE: FOR: on-click
   } // NOTE: FOR: function getTaskData
 
 
@@ -64,23 +65,27 @@ $(function(){
   }); // NOTE: FOR: on-click
 
 
-  // NOTE: ajax.delete
-  $('#tasks_active').on('click', '.deleteButton', function(){
-    var idDelectedTask = $(this).parent().parent().data().id; // TODO: CHECK TRANSVERSING
-    console.log('This is the task to delete: ', idDelectedTask);
-    $.ajax({
-      type: 'Delete',
-      url: '/tasks/delete/' + idDelectedTask,  // NOTE: /tasks/delete
-      success: function(response) {
-        console.log('successful delete reponse: ', response);
-        getTaskData();
-      }
-    });
+
+// NOTE: Completed Task
+$('#tasks_active').on('click', '#completedTask', function(){
+  // $('#tasks_active').toggle();
+  var idcompletedTask = $(this).parent().parent().data().id; // TODO: CHECK TRANSVERSING
+  console.log('This is the completed task to delete: ', idcompletedTask);
+  $.ajax({
+    type: 'PUT',
+    url: '/tasks/complete/' + idcompletedTask,  // NOTE: /tasks/complete
+    success: function(response) {
+      console.log('successful completed Task reponse: ', response);
+      getTaskData();
+    }
   });
+});
+
+
 
 
   // NOTE: ajax.UPDATE
-  $('#tasks_active').on('click', '.editTask', function() {
+  $('#tasks_active').on('click', '#editTask', function() {
     var idEditedTask = $(this).parent().parent().data().id; // TODO: CHECK TRANSVERSING
     var taskToSave = $(this).parent().parent().find('.taskList').val();
     var taskObjectToSave = {
@@ -92,6 +97,20 @@ $(function(){
       data: taskObjectToSave,
       success: function(response) {
         console.log('successful update reponse: ', response);
+        getTaskData();
+      }
+    });
+  });
+
+  // NOTE: ajax.delete
+  $('#tasks_active').on('click', '#deleteButton', function(){
+    var idDelectedTask = $(this).parent().parent().data().id; // TODO: CHECK TRANSVERSING
+    console.log('This is the task to delete: ', idDelectedTask);
+    $.ajax({
+      type: 'Delete',
+      url: '/tasks/delete/' + idDelectedTask,  // NOTE: /tasks/delete
+      success: function(response) {
+        console.log('successful delete reponse: ', response);
         getTaskData();
       }
     });

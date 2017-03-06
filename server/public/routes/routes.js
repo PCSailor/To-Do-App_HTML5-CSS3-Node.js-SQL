@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+// var router = require('express').Router(); // NOTE: This 1 line replaces the above two
 
 var pg = require('pg'); // sources pg from node_modules
 var config = {
@@ -32,6 +33,40 @@ router.get('/', function(req, res){ // replaced with a SELECT statement into SQL
     } // NOTE: FOR: else
   }); // NOTE: FOR: pool.connect
 }); // NOTE: FOR: router.get
+
+
+
+// NOTE: router POST
+router.put('/complete/:id', function(req, res){ // NOTE: installed by body-parser, path from client.js, replaced with SQL-INSERT
+var completeTasks = req.body;  // NOTE: data from client.js/ajax-post/data: clientObject,
+console.log('routes.js/complete = ', completeTasks); // NOTE: should match data from client.js/ajax-post/data: clientObject,
+console.log('routes.js/req.body = ', req.body); // NOTE: should match data from client.js/ajax-post/data: clientObject,
+pool.connect(function(errorConnectingToDatabase, client, done){
+  if(errorConnectingToDatabase) {
+    console.log('router.put-error-Connecting-To-Database = ', errorConnectingToDatabase);
+    res.sendStatus(500);
+  } else {  // NOTE: Database Connected
+    // client.query('INSERT INTO tasks (tasks_active, tasks_inprogress, tasks_needhelp, tasks_reminder, tasks_oncalendar, tasks_completed, importance, color) VALUES ($1, $2, $3, $4, $5, $6, $7);',
+    client.query('UPDATE tasks_one SET completed =$1 WHERE ID = $2;', // tasks_active,
+    ["complete", completeTasks.id],
+    function(errorMakingQuery, result) { // NOTE: runs after query is sent out
+      done();
+      if(errorMakingQuery) {
+        console.log('router.put-error-Making-Query = ', errorMakingQuery);
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(201);
+      } // NOTE: FOR: else
+    }); // NOTE: FOR: function(errorMakingQuery
+  } // NOTE: FOR: else
+}); // NOTE: FOR: pool.connect
+}); // NOTE: FOR: router.post
+
+
+
+
+
+
 
 
 // NOTE: router POST

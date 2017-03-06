@@ -84,33 +84,33 @@ $(function(){
 
 
 // NOTE: Open the Menu
-// $('#hamburger').click(function() { // NOTE: div hamburger // QUESTION: What's diggerence with this code? --> $('#hamburger').on('click', function() {
-//   $('#content').css('min-height', $(window).height()); // NOTE: div content for the table
-//   $('nav').css('opacity', 1); // NOTE: element nav for menu links // PROBLEM?? // only setting opacity
-//   var contentWidth = $('#content').width();  // NOTE: div content width set to not scale while animating
-//   $('#content').css('width', contentWidth); // NOTE: div content set to original width
-//   $('#contentLayer').css('display', 'block'); // NOTE: Layer layed over content so that same content is unclickable with menu shown
-//   $('#container').bind('touchmove', function (e) { // NOTE: disable mobile-device-all-scrolling while menu shown
-//     e.preventDefault();
-//   });
-//   $('#container').animate({"marginLeft": ["90%", 'easeOutExpo']}, {  // QUESTION: animate & easeOutExpo?
-//     duration: 700  // QUESTION: duration?
-//   }); // NOTE: FOR: container.animate
-// }); // NOTE: FOR: hamburger.click
-//
-// // NOTE: Close the menu
-//   $("#contentLayer").click(function () {
-//       $('#container').unbind('touchmove'); // NOTE: enable mobile-device-all-scrolling with closed menu
-//       $("#container").animate({"marginLeft": ["-1", 'easeOutExpo']}, { // NOTE: set whole container margin to original-jquery UI animation
-//           duration: 700,
-//           complete: function () {
-//               $('#content').css('width', 'auto');
-//               $('#contentLayer').css('display', 'none');
-//               $('nav').css('opacity', 0);
-//               $('#content').css('min-height', 'auto');
-//           }
-//       });
-//   }); // NOTE: Sourced from https://github.com/PCSailor/mobile-menu-hamburger/edit/master/js/hamburger.js
+$('#hamburger').click(function() { // NOTE: div hamburger // QUESTION: What's diggerence with this code? --> $('#hamburger').on('click', function() {
+  $('#content').css('min-height', $(window).height()); // NOTE: div content for the table
+  $('nav').css('opacity', 1); // NOTE: element nav for menu links // PROBLEM?? // only setting opacity
+  var contentWidth = $('#content').width();  // NOTE: div content width set to not scale while animating
+  $('#content').css('width', contentWidth); // NOTE: div content set to original width
+  $('#contentLayer').css('display', 'block'); // NOTE: Layer layed over content so that same content is unclickable with menu shown
+  $('#container').bind('touchmove', function (e) { // NOTE: disable mobile-device-all-scrolling while menu shown
+    e.preventDefault();
+  });
+  $('#container').animate({"marginLeft": ["90%", 'easeOutExpo']}, {  // QUESTION: animate & easeOutExpo?
+    duration: 700  // QUESTION: duration?
+  }); // NOTE: FOR: container.animate
+}); // NOTE: FOR: hamburger.click
+
+// NOTE: Close the menu
+  $("#contentLayer").click(function () {
+      $('#container').unbind('touchmove'); // NOTE: enable mobile-device-all-scrolling with closed menu
+      $("#container").animate({"marginLeft": ["-1", 'easeOutExpo']}, { // NOTE: set whole container margin to original-jquery UI animation
+          duration: 700,
+          complete: function () {
+              $('#content').css('width', 'auto');
+              $('#contentLayer').css('display', 'none');
+              $('nav').css('opacity', 0);
+              $('#content').css('min-height', 'auto');
+          }
+      });
+  }); // NOTE: Sourced from https://github.com/PCSailor/mobile-menu-hamburger/edit/master/js/hamburger.js
 
 
 
