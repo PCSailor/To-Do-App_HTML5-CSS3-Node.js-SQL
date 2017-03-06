@@ -58,19 +58,19 @@ $(function(){
   }); // NOTE: FOR: enterNewTaskButton').on('click'
 
 
-  // // NOTE: ajax.delete
-  // $('#tasks_active').on('click', '.deleteButton', function(){
-  //   var idDelectedTask = $(this).parent().parent().data().id; // TODO: CHECK TRANSVERSING
-  //   console.log('This is the task to delete: ', idDelectedTask);
-  //   $.ajax({
-  //     type: 'Delete',
-  //     url: '/tasks/delete/' + idDelectedTask,  // NOTE: /tasks/delete
-  //     success: function(response) {
-  //       console.log('successful delete reponse: ', reponse);
-  //       getTaskData();
-  //     }
-  //   })
-  // });
+  // NOTE: ajax.delete
+  $('#tasks_active').on('click', '.deleteButton', function(){
+    var idDelectedTask = $(this).parent().parent().data().id; // TODO: CHECK TRANSVERSING
+    console.log('This is the task to delete: ', idDelectedTask);
+    $.ajax({
+      type: 'Delete',
+      url: '/tasks/delete/' + idDelectedTask,  // NOTE: /tasks/delete
+      success: function(response) {
+        console.log('successful delete reponse: ', response);
+        getTaskData();
+      }
+    });
+  });
 
   //
   // // NOTE: ajax.UPDATE
