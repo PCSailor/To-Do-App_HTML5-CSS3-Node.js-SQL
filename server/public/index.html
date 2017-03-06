@@ -6,21 +6,22 @@
   <!-- need viewport code? -->
   <script src="/vendors/jquery-3.1.1.min.js" charset="utf-8"></script>
   <script src="/vendors/jquery-ui.min.js" charset="utf-8"></script>
-  <script src="/scripts/client.js" charset="utf-8"></script>
+  <script src="/scripts/client-withoutHamburger.js" charset="utf-8"></script>
   <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
   <div id="container">
-      <!-- <h1 id="pc">MyTaskApp_PhilCurtis-above header</h1> -->
-  <header>
+    <!-- Hamburger menu -->
+      <!-- https://www.w3schools.com/howto/howto_css_menu_icon.asp -->
+  <!-- <header>
     <div id="hamburger">
       <div></div>
       <div></div>
       <div></div>
     </div>
-  </header>
-    <h1 id="pc">MyTaskApp_PhilCurtis</h1>
-    <nav>
+  </header> -->
+    <h2 id="pc">MyTaskApp_PhilCurtis</h2>
+    <!-- <nav>
       <ul>
         <li><a href="#">MyTaskApp Home</a></li>
         <li><a href="https://trello.com">Trello</a></li>
@@ -34,34 +35,30 @@
         <li><a href="https://www.wunderlist.com/login?redirect_url=/webapp">Wunderlist</a></li>
         <li><a href="https://my.xmarks.com/">xmarks</a></li>
       </ul>
-    </nav>
-    <!-- Hamburger menu -->
-      <!-- https://www.w3schools.com/howto/howto_css_menu_icon.asp -->
+    </nav> -->
 
-  <!-- <div id="contentLayer"></div>
-<div class="content"> -->
     <div id="taskEntry">
       <form id="newTaskForm" action="index.html" method="post">
         <p>
-          <input name="tasks_active" placeholder="Enter New Task" id="enterNewTask">
+          <input value=" " placeholder="Enter New Task" id="enterNewTask"> <!-- name="tasks_active" -->
           <button type="submit" id="enterNewTaskButton">Click here to enter a new task</button>
         </p>
       </form>
+    </div>
       <div id="contentLayer"></div>
-    <div class="content">
-      <p>
+    <div id="content">
         <table>
           <thead>
             <tr>
-              <th>Tasks</th>
+              <th><h2>Tasks</h2></th>
             </tr>
           </thead>
           <tbody id="tasks_active">
           </tbody>
         </table>
-      </p>
     </div>
 
+  <p>
     <h3>Select Boxes</h3>
     <ul id="selectBoxes">
       <li>Delete Task</li>
@@ -70,64 +67,26 @@
       <li>Assistance Needed</li>
       <li>Set Reminder</li>
     </ul>
-    <h3>Possible Options</h3>
   </p>
 
   <p>
+    <h3>Possible Options</h3>
     <ul id="possibleOptions">
       <li>Color Code with Edit-label</li>
       <li>Add to Calander plus invite</li>
       <li>Add to Reoccuring List</li>
     </ul>
   </p>
-  <p>
 
+  <p>
     <h3>Stretch Goals:</h3>
     <ul id="stretchGoals">
       <li>Collaspeable folder list on left with is organized by year/month (i.e.: 2017-03) and automatically puts a task inside the correct folder</li>
       <li>Cloud based data</li>
       <li>Able to sync and log in with any task manager</li>
-    </ul></p>
-</div>
+    </ul>
+  </p>
 
-
-
-  <!-- Black Responsive Menus -->
-  <!-- <div class="nav-container">
-  <p>
-  <ul class="nav">
-  <li class="active">
-  <a href="#">
-  <span class="icon-home"></span>
-  <span class="text">Home</span>
-</a>
-</li>
-<li>
-<a href="#">
-<span class="icon-user"></span>
-<span class="text">Contact</span>
-</a>
-</li>
-<li>
-<a href="#">
-<span class="icon-headphones"></span>
-<span class="text">Summary</span>
-</a>
-</li>
-<li>
-<a href="#">
-<span class="icon-picture"></span>
-<span class="text">Experience</span>
-</a>
-</li>
-<li>
-<a href="#">
-<span class="icon-facetime-video"></span><span class="text">Education</span>
-</a>
-</li>
-</ul>
-</p>
-</div> -->
     </div>
   </body>
 </html>

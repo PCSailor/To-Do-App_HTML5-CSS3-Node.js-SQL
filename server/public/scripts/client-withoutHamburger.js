@@ -1,8 +1,9 @@
 $(function(){
   console.log(new Date().getFullYear() + " jQuery sourced");
 
-// BUG: adds new task only after page refresh, but showing up on terminal and console with click
+// BUG: adds new task only after page refresh, but showing up on terminal and console with click.  Delete & update working correct
 // BUG: adding on-click changes click result
+// BUG: When I post the table appears but not on page load
   // NOTE: ajax.GET
   getTaskData();
   function getTaskData() {
@@ -20,7 +21,7 @@ $(function(){
             $newTask.append('<td><input value=" ' + currentTask.tasks_active + '" class="taskList"></td>');
             $newTask.append('<td><button class="deleteButton">Delete</button></td>');
             $newTask.append('<td><button class="editTask">Save Edit</button></td>');
-            $('#tasks_active').prepend($newTask); // NOTE: Add new task to top of list
+            $('#tasks_active').append($newTask); // NOTE: Add new task to top of list
             // NOTE: From index.html:
             // <form id="newTaskForm" action="index.html" method="post">
             // <input name="tasks_active">
@@ -37,7 +38,8 @@ $(function(){
   $('#enterNewTaskButton').on('click', function(){
     console.log('enter-New-Task-Button-clicked!');
     event.preventDefault();  // QUESTION: What is this for again?
-    var clientObject = {}; //var newBookObject = {};
+    var clientObject = {};
+
     // QUESTION: Is this code from Books needed?
     //     var formFields = $(this).serializeArray();
     // formFields.forEach(function (field) {
@@ -45,6 +47,7 @@ $(function(){
     // });
     // console.log('client.js/formfields = ', formfields);
     // QUESTION: Is this code from Books needed?
+
     clientObject.tasks_active = $('#enterNewTask').val();
     console.log('client.js/clientObject = ', clientObject);
     console.log(typeof clientObject);
@@ -54,7 +57,7 @@ $(function(){
       data: clientObject,  // NOTE: data to routes.js/router.post/var newTasks = req.body;
       success: function(response){
         console.log('client.js/newtask response = ', response);
-        // getTaskData();
+        getTaskData();
         $('#newTaskForm > input').val('');
       } // NOTE: FOR: success-function
     }); // NOTE: FOR: ajax-post
@@ -88,7 +91,7 @@ $(function(){
       url: '/tasks/edit/' + idEditedTask,  // NOTE: /tasks/edit
       data: taskObjectToSave,
       success: function(response) {
-        console.log('successful update reponse: ', reponse);
+        console.log('successful update reponse: ', response);
         getTaskData();
       }
     });

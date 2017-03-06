@@ -13,8 +13,8 @@ html {
 
 /*basic body*/
 body {
-  margin: 0;
-  padding: 0;
+  margin: 1px;
+  padding: 5px;
   overflow-x: hidden;
   font-family: Arial;
   font-size: 18px;
@@ -36,7 +36,8 @@ header {
 /*background-color covers the menu, position absolute set to cover who;e viewport*/
 #content {
   background-color: #FFFFFF;
-  padding: 52px 10px 10px 10px;
+  /*padding: 52px 10px 10px 10px;*/
+  padding: 10px 10px 10px 10px;
   position: relative;
   width: auto;
   height: 100%;

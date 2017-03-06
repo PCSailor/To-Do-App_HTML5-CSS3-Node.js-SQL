@@ -6,7 +6,7 @@ $(function(){
   // NOTE: ajax.GET
   getTaskData();
   function getTaskData() {
-    // $('#enterNewTaskButton').on('click', function(){
+    $('#enterNewTaskButton').on('click', function(){
       $.ajax({
         type: 'GET',
         url: '/tasks',  // NOTE: /tasks
@@ -21,15 +21,10 @@ $(function(){
             $newTask.append('<td><button class="deleteButton">Delete</button></td>');
             $newTask.append('<td><button class="editTask">Save Edit</button></td>');
             $('#tasks_active').prepend($newTask); // NOTE: Add new task to top of list
-            // NOTE: From index.html:
-            // <form id="newTaskForm" action="index.html" method="post">
-            // <input name="tasks_active">
-            // <button type="submit" id="enterNewTaskButton">
-            // <tbody id="tasks_active">
           } // NOTE: FOR: forLoop
         } // NOTE: FOR: success: function
       }); // NOTE: FOR: ajax.GET
-    // }); // NOTE: FOR: on-click
+    }); // NOTE: FOR: on-click
   } // NOTE: FOR: function getTaskData
 
 
@@ -38,13 +33,6 @@ $(function(){
     console.log('enter-New-Task-Button-clicked!');
     event.preventDefault();  // QUESTION: What is this for again?
     var clientObject = {}; //var newBookObject = {};
-    // QUESTION: Is this code from Books needed?
-    //     var formFields = $(this).serializeArray();
-    // formFields.forEach(function (field) {
-    //   clientObject[field.name] = field.value;
-    // });
-    // console.log('client.js/formfields = ', formfields);
-    // QUESTION: Is this code from Books needed?
     clientObject.tasks_active = $('#enterNewTask').val();
     console.log('client.js/clientObject = ', clientObject);
     console.log(typeof clientObject);
@@ -88,7 +76,7 @@ $(function(){
       url: '/tasks/edit/' + idEditedTask,  // NOTE: /tasks/edit
       data: taskObjectToSave,
       success: function(response) {
-        console.log('successful update reponse: ', reponse);
+        console.log('successful update reponse: ', response);
         getTaskData();
       }
     });
@@ -96,35 +84,33 @@ $(function(){
 
 
 // NOTE: Open the Menu
-  $("#hamburger").click(function () {
-       $('#content').css('min-height', $(window).height());
-        $('nav').css('opacity', 1);
-        var contentWidth = $('#content').width(); // NOTE: set primary content container width so content doesnt scale while animating
-        $('#content').css('width', contentWidth); // NOTE: set content to original width
-        $('#contentLayer').css('display', 'block'); // NOTE: display layer to disable clicking-scrolling on content while menu shown
-        $('#container').bind('touchmove', function (e) { // NOTE: disable mobile-device-all-scrolling while menu shown
-            e.preventDefault()
-        });
-        //set margin for the whole container with a jquery UI animation
-        $("#container").animate({"marginLeft": ["70%", 'easeOutExpo']}, {
-            duration: 700
-        });
-    });
-
-
-// NOTE: Close the menu
-  $("#contentLayer").click(function () {
-      $('#container').unbind('touchmove'); // NOTE: enable mobile-device-all-scrolling with closed menu
-      $("#container").animate({"marginLeft": ["-1", 'easeOutExpo']}, { // NOTE: set whole container margin to original-jquery UI animation
-          duration: 700,
-          complete: function () {
-              $('#content').css('width', 'auto');
-              $('#contentLayer').css('display', 'none');
-              $('nav').css('opacity', 0);
-              $('#content').css('min-height', 'auto');
-          }
-      });
-  }); // NOTE: Sourced from https://github.com/PCSailor/mobile-menu-hamburger/edit/master/js/hamburger.js
+// $('#hamburger').click(function() { // NOTE: div hamburger // QUESTION: What's diggerence with this code? --> $('#hamburger').on('click', function() {
+//   $('#content').css('min-height', $(window).height()); // NOTE: div content for the table
+//   $('nav').css('opacity', 1); // NOTE: element nav for menu links // PROBLEM?? // only setting opacity
+//   var contentWidth = $('#content').width();  // NOTE: div content width set to not scale while animating
+//   $('#content').css('width', contentWidth); // NOTE: div content set to original width
+//   $('#contentLayer').css('display', 'block'); // NOTE: Layer layed over content so that same content is unclickable with menu shown
+//   $('#container').bind('touchmove', function (e) { // NOTE: disable mobile-device-all-scrolling while menu shown
+//     e.preventDefault();
+//   });
+//   $('#container').animate({"marginLeft": ["90%", 'easeOutExpo']}, {  // QUESTION: animate & easeOutExpo?
+//     duration: 700  // QUESTION: duration?
+//   }); // NOTE: FOR: container.animate
+// }); // NOTE: FOR: hamburger.click
+//
+// // NOTE: Close the menu
+//   $("#contentLayer").click(function () {
+//       $('#container').unbind('touchmove'); // NOTE: enable mobile-device-all-scrolling with closed menu
+//       $("#container").animate({"marginLeft": ["-1", 'easeOutExpo']}, { // NOTE: set whole container margin to original-jquery UI animation
+//           duration: 700,
+//           complete: function () {
+//               $('#content').css('width', 'auto');
+//               $('#contentLayer').css('display', 'none');
+//               $('nav').css('opacity', 0);
+//               $('#content').css('min-height', 'auto');
+//           }
+//       });
+//   }); // NOTE: Sourced from https://github.com/PCSailor/mobile-menu-hamburger/edit/master/js/hamburger.js
 
 
 
