@@ -2,21 +2,45 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>to-do-app-sql</title>
+  <title>MyTasks</title>
+  <!-- need viewport code? -->
   <script src="/vendors/jquery-3.1.1.min.js" charset="utf-8"></script>
+  <script src="/vendors/jquery-ui.min.js" charset="utf-8"></script>
   <script src="/scripts/client.js" charset="utf-8"></script>
   <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
-  <h1>A To-Do app, by Phil Curtis</h1>
-  <div id="center">
-    <p>
-      <!-- Hamburger menu -->
-      <div class=menu></div>
-      <div class=menu></div>
-      <div class=menu></div> <!-- https://www.w3schools.com/howto/howto_css_menu_icon.asp -->
-    </p>
+  <div id="container">
+      <h1 id="pc">MyTaskApp_PhilCurtis-above header</h1>
+  <header>
+    <div id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </header>
+    <h1 id="pc">MyTaskApp_PhilCurtis</h1>
+    <nav>
+      <ul>
+        <li><a href="#">MyTaskApp Home</a></li>
+        <li><a href="https://trello.com">Trello</a></li>
+        <li><a href="https://keep.google.com/u/0/#home">Google Keep</a></li>
+        <li><a href="https://calendar.google.com">Google Calander</a></li>
+        <li><a href="https://mail.google.com">Gmail</a></li>
+        <li><a href="https://chi.midphase.com">Midphase</a></li>
+        <li><a href="https://evernote.com/">Evernote</a></li>
+        <li><a href="https://www.onenote.com/hrd">OneNote</a></li>
+        <li><a href="https://support.any.do/access/unauthenticated">Any.Do</a></li>
+        <li><a href="https://www.wunderlist.com/login?redirect_url=/webapp">Wunderlist</a></li>
+        <li><a href="https://my.xmarks.com/">xmarks</a></li>
+      </ul>
+    </nav>
+    <!-- Hamburger menu -->
+      <!-- https://www.w3schools.com/howto/howto_css_menu_icon.asp -->
 
+  <div id="contentLayer"></div>
+
+<div class="content">
     <p>
       <div id="folders">
         <h4>Folders</h4>
@@ -40,16 +64,10 @@
             </tr>
           </thead>
           <tbody id="tasks_active">
-
           </tbody>
         </table>
       </p>
     </div>
-
-
-
-
-
 
     <h3>Select Boxes</h3>
     <ul id="selectBoxes">
@@ -75,9 +93,9 @@
     <ul id="stretchGoals">
       <li>Collaspeable folder list on left with is organized by year/month (i.e.: 2017-03) and automatically puts a task inside the correct folder</li>
       <li>Cloud based data</li>
-
+      <li>Able to sync and log in with any task manager</li>
     </ul></p>
-  </div>
+</div>
 
 
 
@@ -117,5 +135,6 @@
 </ul>
 </p>
 </div> -->
-</body>
+    </div>
+  </body>
 </html>
